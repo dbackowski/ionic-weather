@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>home-weather</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="location">
+    Latitude: {{ location.coords.latitude }}
+    Longitude: {{ location.coords.longitude }} 
+  </div>
+</ion-content>
