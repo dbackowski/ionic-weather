@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomeWeatherPage } from '../pages/home-weather/home-weather';
+import { ForecastServiceProvider } from '../providers/forecast.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeWeatherPage } from '../pages/home-weather/home-weather';
     StatusBar,
     SplashScreen,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ForecastServiceProvider
   ]
 })
 export class AppModule {}
