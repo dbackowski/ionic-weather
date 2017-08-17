@@ -6,7 +6,11 @@
 
 <ion-content padding>
   <div *ngIf="location">
+    <canvas id="icon1" width="128" height="128"></canvas>
     Latitude: {{ location.coords.latitude }}
     Longitude: {{ location.coords.longitude }} 
+    <div *ngIf="forecast">
+      {{ forecast.currently.temperature }}
+    </div>
   </div>
 </ion-content>
