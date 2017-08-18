@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomeWeatherPage } from '../pages/home-weather/home-weather';
 import { ForecastServiceProvider } from '../providers/forecast.service';
+import { AppConfig }    from '../config/app.config';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ForecastServiceProvider } from '../providers/forecast.service';
     SplashScreen,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ForecastServiceProvider
+    ForecastServiceProvider,
+    AppConfig
   ]
 })
 export class AppModule {}
