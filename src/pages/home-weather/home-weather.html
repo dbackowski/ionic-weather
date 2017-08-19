@@ -1,16 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>home-weather</ion-title>
+    <ion-title>Current Location</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="location">
-    <canvas id="icon1" width="128" height="128"></canvas>
-    Latitude: {{ location.coords.latitude }}
-    Longitude: {{ location.coords.longitude }} 
-    <div *ngIf="forecast">
-      {{ forecast.currently.temperature }}
-    </div>
+  <div *ngIf="location && forecast">
+    <p>
+      Temperature: {{ forecast.currently.temperature }} C
+    </p>
+    <p>
+      Apparent Temperature: {{ forecast.currently.apparentTemperature }} C
+    </p>
+    <p>
+      Pressure: {{ forecast.currently.pressure }} Pa
+    <p>
+    <p>
+      Wind Speed: {{ forecast.currently.windSpeed }}
+    </p>
+    <p>
+      Summary: {{ forecast.currently.summary }}
+    </p>
   </div>
 </ion-content>
