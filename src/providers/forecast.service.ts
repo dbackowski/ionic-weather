@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx'
 import 'rxjs/add/operator/map';
 
-import { Forecast } from '../models/forecast';
+import { Forecast } from '../interfaces/forecast';
 import { AppConfig } from '../config/app.config';
 
 @Injectable()

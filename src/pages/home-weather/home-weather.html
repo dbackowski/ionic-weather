@@ -6,20 +6,40 @@
 
 <ion-content padding>
   <div *ngIf="location && forecast">
-    <p>
-      Temperature: {{ forecast.currently.temperature }} C
-    </p>
-    <p>
-      Apparent Temperature: {{ forecast.currently.apparentTemperature }} C
-    </p>
-    <p>
-      Pressure: {{ forecast.currently.pressure }} Pa
-    <p>
-    <p>
-      Wind Speed: {{ forecast.currently.windSpeed }}
-    </p>
-    <p>
-      Summary: {{ forecast.currently.summary }}
-    </p>
+    <ion-row>
+      <ion-col col-12 text-center>
+        <h1>
+          {{ forecast.currently.temperature | number:'.0-0'}}&deg;C
+        </h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <p>
+          Pressure: {{ forecast.currently.pressure }} Pa
+        </p>
+      </ion-col>
+      <ion-col col-6>
+        <p>
+          Wind Speed: {{ forecast.currently.windSpeed }}
+        </p>
+      </ion-col>  
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 text-center>
+        <p>
+          Summary: {{ forecast.currently.summary }}
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-3 *ngFor="let index of [0,1,2,3]">
+        {{ forecast.daily.data[index].time | formatDate:'MM-DD' }}
+        <br>
+        {{ forecast.daily.data[index].temperatureMax | number:'.0-0'}}&deg;C
+        <br>
+        {{ forecast.daily.data[index].temperatureMin | number:'.0-0'}}&deg;C
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

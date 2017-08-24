@@ -10,11 +10,13 @@ import { MyApp } from './app.component';
 import { HomeWeatherPage } from '../pages/home-weather/home-weather';
 import { ForecastServiceProvider } from '../providers/forecast.service';
 import { AppConfig }    from '../config/app.config';
+import { FormatDate } from '../pipes/format-date';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomeWeatherPage
+    HomeWeatherPage,
+    FormatDate
   ],
   imports: [
     BrowserModule,
