@@ -9,19 +9,19 @@
     <ion-row>
       <ion-col col-12 text-center>
         <h1>
-          {{ forecast.currently.temperature | number:'.0-0'}}&deg;C
+          {{ forecast.currently.temperature | number:'.0-0' }}&deg;C
         </h1>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-6>
         <p>
-          Pressure: {{ forecast.currently.pressure }} Pa
+          Pressure: {{ forecast.currently.pressure | number:'.0-0' }} hPa
         </p>
       </ion-col>
       <ion-col col-6>
         <p>
-          Wind Speed: {{ forecast.currently.windSpeed }}
+          Wind Speed: {{ forecast.currently.windSpeed | number:'.0-0' }} m/s
         </p>
       </ion-col>  
     </ion-row>
@@ -34,7 +34,7 @@
     </ion-row>
     <ion-row>
       <ion-col col-3 *ngFor="let index of [0,1,2,3]">
-        {{ forecast.daily.data[index].time | formatDate:'MM-DD' }}
+        {{ forecast.daily.data[index].time | formatDate:'dddd' }}
         <br>
         {{ forecast.daily.data[index].temperatureMax | number:'.0-0'}}&deg;C
         <br>

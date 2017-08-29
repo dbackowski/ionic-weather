@@ -12,7 +12,9 @@ npm install -g ionic cordova
 
 Create .env file with:
 
+```
 DARK_SKY_API_KEY=YOUR_DARK_SKY_API_KEY
+```
 
 Start preview in browser:
 
