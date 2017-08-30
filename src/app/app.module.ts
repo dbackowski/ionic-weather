@@ -11,6 +11,7 @@ import { HomeWeatherPage } from '../pages/home-weather/home-weather';
 import { ForecastServiceProvider } from '../providers/forecast.service';
 import { AppConfig }    from '../config/app.config';
 import { FormatDate } from '../pipes/format-date';
+import { LocationServiceProvider } from '../providers/location.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormatDate } from '../pipes/format-date';
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ForecastServiceProvider,
-    AppConfig
+    AppConfig,
+    LocationServiceProvider
   ]
 })
 export class AppModule {}
