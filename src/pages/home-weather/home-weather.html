@@ -11,6 +11,9 @@
         <h1>
           {{ forecast.currently.temperature | number:'.0-0' }}&deg;C
         </h1>
+        <h5>
+          {{ forecast.currently.summary }}
+        </h5>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -24,13 +27,6 @@
           Wind Speed: {{ forecast.currently.windSpeed | number:'.0-0' }} m/s
         </p>
       </ion-col>  
-    </ion-row>
-    <ion-row>
-      <ion-col col-12 text-center>
-        <p>
-          Summary: {{ forecast.currently.summary }}
-        </p>
-      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-3 *ngFor="let index of [0,1,2,3]">
