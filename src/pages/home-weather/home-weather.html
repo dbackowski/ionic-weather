@@ -12,6 +12,7 @@
           {{ forecast.currently.temperature | number:'.0-0' }}&deg;C
         </h1>
         <h5>
+          <ion-icon name="{{ forecast.currently.icon | weatherIcon }}"></ion-icon>
           {{ forecast.currently.summary }}
         </h5>
       </ion-col>

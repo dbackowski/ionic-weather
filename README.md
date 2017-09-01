@@ -1,6 +1,6 @@
 # ionic2-weather
 
-Simple Ionic 3 application to show weather forecast with dark sky api.
+Simple Ionic 3 application to show weather forecast with dark sky api (https://darksky.net).
 
 ## Instalation
 

@@ -11,13 +11,15 @@ import { HomeWeatherPage } from '../pages/home-weather/home-weather';
 import { ForecastServiceProvider } from '../providers/forecast.service';
 import { AppConfig }    from '../config/app.config';
 import { FormatDate } from '../pipes/format-date';
+import { WeatherIcon } from '../pipes/weather-icon';
 import { LocationServiceProvider } from '../providers/location.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomeWeatherPage,
-    FormatDate
+    FormatDate,
+    WeatherIcon
   ],
   imports: [
     BrowserModule,
