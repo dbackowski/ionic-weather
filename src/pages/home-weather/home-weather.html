@@ -5,16 +5,16 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="location && forecast">
+  <div *ngIf="location && forecast" margin-top>
     <ion-row>
       <ion-col col-12 text-center>
         <h1>
           {{ forecast.currently.temperature | number:'.0-0' }}&deg;C
         </h1>
-        <h5>
+        <h1>
           <ion-icon name="{{ forecast.currently.icon | weatherIcon }}"></ion-icon>
           {{ forecast.currently.summary }}
-        </h5>
+        </h1>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -31,11 +31,15 @@
     </ion-row>
     <ion-row>
       <ion-col col-3 *ngFor="let index of [0,1,2,3]">
-        {{ forecast.daily.data[index].time | formatDate:'dddd' }}
-        <br>
-        {{ forecast.daily.data[index].temperatureMax | number:'.0-0'}}&deg;C
-        <br>
-        {{ forecast.daily.data[index].temperatureMin | number:'.0-0'}}&deg;C
+        <p>
+          {{ forecast.daily.data[index].time | formatDate:'dddd' }}
+        </p>
+        <h2>
+          <ion-icon name="{{ forecast.daily.data[index].icon | weatherIcon }}"></ion-icon> 
+        </h2>
+        <p>
+          {{ forecast.daily.data[index].temperatureMax | number:'.0-0'}}&deg;C / {{ forecast.daily.data[index].temperatureMin | number:'.0-0'}}&deg;C
+        </p>
       </ion-col>
     </ion-row>
   </div>
