@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ForecastServiceProvider } from '../../providers/forecast.service';
 import { Forecast } from '../../interfaces/forecast';
 import { LocationServiceProvider } from '../../providers/location.service';
 import { Observable } from 'rxjs/Rx'
 
-@IonicPage()
 @Component({
   selector: 'page-home-weather',
   templateUrl: 'home-weather.html',
