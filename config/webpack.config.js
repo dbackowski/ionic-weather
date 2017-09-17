@@ -9,7 +9,8 @@ function getPlugins() {
       'process.env': _(process.env)
                     .pick(_.keys(dotenvConfig.parsed))
                     .mapValues((v) => (JSON.stringify(v)))
-                    .value()
+                    .value(),
+      'isProd': process.env.IONIC_ENV === 'prod'
     })
   ];
   // for dev builds, use our custom environment
