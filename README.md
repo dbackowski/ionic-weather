@@ -2,6 +2,8 @@
 
 Simple Ionic 3 application to show weather forecast with dark sky api (https://darksky.net).
 
+<img src="https://i.imgur.com/DJDceqs.png" width="200">
+
 ## Instalation
 
 Install node modules:
