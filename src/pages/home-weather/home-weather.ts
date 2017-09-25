@@ -5,6 +5,8 @@ import { ForecastServiceProvider } from '../../providers/forecast.service';
 import { Forecast } from '../../interfaces/forecast';
 import { LocationServiceProvider } from '../../providers/location.service';
 import { Observable } from 'rxjs/Rx'
+import { LoadingServiceProvider } from '../../providers/loading.service';
+import { ToastServiceProvider } from '../../providers/toast.service';
 
 @Component({
   selector: 'page-home-weather',
@@ -21,10 +23,14 @@ export class HomeWeatherPage {
     public navParams: NavParams, 
     public geolocation: Geolocation, 
     private forecastServiceProvider: ForecastServiceProvider,
-    private locationServiceProvider: LocationServiceProvider) {
-  }
+    private locationServiceProvider: LocationServiceProvider,
+    private toastServiceProvider: ToastServiceProvider,
+    private loadingServiceProvider: LoadingServiceProvider
+  ) {}
 
   ionViewDidLoad() {
+    this.loadingServiceProvider.show();
+
     this.geolocation.getCurrentPosition().then((location) => {
       this.location = location;
 
@@ -33,14 +39,22 @@ export class HomeWeatherPage {
         this.locationServiceProvider.load(this.location.coords.latitude, this.location.coords.longitude)
       ]
 
-      Observable.forkJoin(toLoad).subscribe(
+      Observable.forkJoin(toLoad).finally(
+        () => {
+          this.loadingServiceProvider.hide();
+        }
+      ).subscribe(
         (resources) => {
           this.forecast = resources[0];
           this.locationName = resources[1].results[2].formatted_address;
+        },
+        (error) => {
+          this.toastServiceProvider.error('Error occured during fetching data.')
         }
       );
     }).catch((error) => {
-      console.log('Error getting location', error);
+      this.loadingServiceProvider.hide();
+      this.toastServiceProvider.error('Error occured during fetching current location.')
     });    
   }
 }

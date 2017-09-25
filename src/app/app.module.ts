@@ -13,6 +13,8 @@ import { AppConfig }    from '../config/app.config';
 import { FormatDate } from '../pipes/format-date';
 import { WeatherIcon } from '../pipes/weather-icon';
 import { LocationServiceProvider } from '../providers/location.service';
+import { LoadingServiceProvider } from '../providers/loading.service';
+import { ToastServiceProvider } from '../providers/toast.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { LocationServiceProvider } from '../providers/location.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ForecastServiceProvider,
     AppConfig,
-    LocationServiceProvider
+    LocationServiceProvider,
+    ToastServiceProvider,
+    LoadingServiceProvider
   ]
 })
 export class AppModule {}
