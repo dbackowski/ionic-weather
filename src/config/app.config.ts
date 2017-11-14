@@ -4,10 +4,10 @@ declare var process: any;
 declare var isProd: any;
 
 @Injectable()
-export class AppConfig {  
+export class AppConfig {
   public darkSkyApiKey: string;
   public googleMapApiKey: string;
-  
+
   constructor() {
     this.darkSkyApiKey = this._readString('DARK_SKY_API_KEY', '');
     this.googleMapApiKey = this._readString('GOOGLE_MAP_API_KEY', '');

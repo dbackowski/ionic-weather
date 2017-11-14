@@ -4,7 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { ForecastServiceProvider } from '../../providers/forecast.service';
 import { Forecast } from '../../interfaces/forecast';
 import { LocationServiceProvider } from '../../providers/location.service';
-import { Observable } from 'rxjs/Rx'
+import { Observable } from 'rxjs/Rx';
 import { LoadingServiceProvider } from '../../providers/loading.service';
 import { ToastServiceProvider } from '../../providers/toast.service';
 
@@ -19,9 +19,9 @@ export class HomeWeatherPage {
   public locationName: string;
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public geolocation: Geolocation, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public geolocation: Geolocation,
     private forecastServiceProvider: ForecastServiceProvider,
     private locationServiceProvider: LocationServiceProvider,
     private toastServiceProvider: ToastServiceProvider,
@@ -34,12 +34,10 @@ export class HomeWeatherPage {
     this.geolocation.getCurrentPosition().then((location) => {
       this.location = location;
 
-      let toLoad = [
+      Observable.forkJoin(
         this.forecastServiceProvider.load(this.location.coords.latitude, this.location.coords.longitude),
         this.locationServiceProvider.load(this.location.coords.latitude, this.location.coords.longitude)
-      ]
-
-      Observable.forkJoin(toLoad).finally(
+      ).finally(
         () => {
           this.loadingServiceProvider.hide();
         }
@@ -55,6 +53,6 @@ export class HomeWeatherPage {
     }).catch((error) => {
       this.loadingServiceProvider.hide();
       this.toastServiceProvider.error('Error occured during fetching current location.')
-    });    
+    });
   }
 }
