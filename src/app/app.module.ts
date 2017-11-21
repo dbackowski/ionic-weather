@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpModule } from '@angular/http';
+import { Network } from "@ionic-native/network";
 
 import { MyApp } from './app.component';
 import { HomeWeatherPage } from '../pages/home-weather/home-weather';
@@ -42,7 +43,8 @@ import { ToastServiceProvider } from '../providers/toast.service';
     AppConfig,
     LocationServiceProvider,
     ToastServiceProvider,
-    LoadingServiceProvider
+    LoadingServiceProvider,
+    Network
   ]
 })
 export class AppModule {}
