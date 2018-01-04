@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -10,10 +10,9 @@ import { AppConfig } from '../config/app.config';
 export class ForecastServiceProvider {
   apiUrl = '/api/forecast';
 
-  constructor(public http: Http, private appConfig: AppConfig) {}
+  constructor(public http: HttpClient, private appConfig: AppConfig) {}
 
   load(latitude: number, longtude: number): Observable<Forecast> {
-    return this.http.get(`${this.appConfig.darkSkyApiUrl()}/${this.appConfig.darkSkyApiKey}/${latitude},${longtude}?units=si`)
-      .map(res => <Forecast>res.json());
+    return this.http.get<Forecast>(`${this.appConfig.darkSkyApiUrl()}/${this.appConfig.darkSkyApiKey}/${latitude},${longtude}?units=si`);
   }
 }
