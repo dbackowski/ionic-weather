@@ -18,12 +18,13 @@ export class MyApp {
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private alertCtrl: AlertController,
-    private network: Network) {
-    platform.ready().then(() => {
+    private network: Network
+  ) {
+    this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
     });
 
     this.network.onDisconnect().subscribe(() => {
