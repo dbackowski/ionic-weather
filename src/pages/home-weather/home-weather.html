@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content fullscreen="true" padding>
   <div *ngIf="location && forecast" margin-top>
     <ion-row>
       <ion-col col-12 text-center>
@@ -27,7 +27,7 @@
         <p>
           Wind Speed: {{ forecast.currently.windSpeed | number:'.0-0' }} m/s
         </p>
-      </ion-col>  
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-3 *ngFor="let index of [0,1,2,3]">
@@ -35,7 +35,7 @@
           {{ forecast.daily.data[index].time | formatDate:'dddd' }}
         </p>
         <h2>
-          <ion-icon name="{{ forecast.daily.data[index].icon | weatherIcon }}"></ion-icon> 
+          <ion-icon name="{{ forecast.daily.data[index].icon | weatherIcon }}"></ion-icon>
         </h2>
         <p>
           {{ forecast.daily.data[index].temperatureMax | number:'.0-0'}}&deg;C / {{ forecast.daily.data[index].temperatureMin | number:'.0-0'}}&deg;C
