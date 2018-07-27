@@ -17,6 +17,7 @@ export class HomeWeatherPage {
   public skycons: any;
   public forecast: Forecast;
   public locationName: string;
+  public bgColorClassName: string;
 
   constructor(
     public navCtrl: NavController,
@@ -45,6 +46,7 @@ export class HomeWeatherPage {
         (resources) => {
           this.forecast = resources[0];
           this.locationName = resources[1].results[2].formatted_address;
+          this.bgColorClassName = this.backgroundColorClassName();
         },
         (error) => {
           this.toastServiceProvider.error('Error occured during fetching data.')
@@ -54,5 +56,28 @@ export class HomeWeatherPage {
       this.loadingServiceProvider.hide();
       this.toastServiceProvider.error('Error occured during fetching current location.')
     });
+  }
+
+  private backgroundColorClassName(): string {
+    let result;
+    const tempMax = this.forecast.daily.data[0].temperatureMax;
+
+    if (tempMax >= 30) {
+      result = 'very-warm';
+    }
+    else if (tempMax >= 20 && tempMax < 30) {
+      result = 'warm';
+    }
+    else if (tempMax > 10 && tempMax < 20) {
+      result = 'normal';
+    }
+    else if (tempMax > 0 && tempMax < 10) {
+      result = 'cold';
+    }
+    else if (tempMax <= 0) {
+      result = 'very-cold';
+    }
+
+    return result;
   }
 }

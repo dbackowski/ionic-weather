@@ -16,6 +16,8 @@ interface ForecastData {
   summary: string;
   icon: string;
   temperature: number;
+  temperatureMin: number;
+  temperatureMax: number;
   apparentTemperature: number;
   dewPoint: number;
   humidity: number;

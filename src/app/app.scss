@@ -14,3 +14,33 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.very-warm {
+  background-color: #FF8500;
+}
+
+.warm {
+  background-color: #ffc600;
+}
+
+.normal {
+  background-color: #94AF10;
+}
+
+.cold {
+  background-color: #06799F;
+}
+
+.very-cold {
+  background-color: #233884;
+}
+
+ion-content {
+  color: white;
+  font-family: league-gothic, sans-serif;
+}
+
+hr {
+  background-color:white;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}

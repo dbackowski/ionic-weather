@@ -13,6 +13,6 @@ export class ForecastServiceProvider {
   constructor(public http: HttpClient, private appConfig: AppConfig) {}
 
   load(latitude: number, longtude: number): Observable<Forecast> {
-    return this.http.get<Forecast>(`${this.appConfig.darkSkyApiUrl()}/${this.appConfig.darkSkyApiKey}/${latitude},${longtude}?units=si`);
+    return this.http.get<Forecast>(`${this.appConfig.darkSkyApiUrl()}/${this.appConfig.darkSkyApiKey}/${latitude},${longtude}?units=ca`);
   }
 }

@@ -1,36 +1,56 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>{{ this.locationName }}</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content fullscreen="true" padding>
+<ion-content fullscreen="true" padding class="{{ bgColorClassName }}">
   <div *ngIf="location && forecast" margin-top>
+    <ion-row>
+      <ion-col text-center>
+        <h1>
+          {{ this.locationName }}
+        </h1>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col col-12 text-center>
         <h1>
-          {{ forecast.currently.temperature | number:'.0-0' }}&deg;C
+          <ion-icon name="{{ forecast.daily.data[0].icon | weatherIcon }}"></ion-icon>
+          {{ forecast.daily.data[0].temperatureMin | number:'.0-0' }}&deg;C&nbsp;-&nbsp;{{ forecast.daily.data[0].temperatureMax | number:'.0-0' }}&deg;C
         </h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
         <h1>
-          <ion-icon name="{{ forecast.currently.icon | weatherIcon }}"></ion-icon>
-          {{ forecast.currently.summary }}
+          {{ forecast.daily.data[0].summary }}
         </h1>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-6>
         <p>
-          Pressure: {{ forecast.currently.pressure | number:'.0-0' }} hPa
+          Pressure: {{ forecast.daily.data[0].pressure | number:'.0-0' }} hPa
         </p>
       </ion-col>
       <ion-col col-6>
         <p>
-          Wind Speed: {{ forecast.currently.windSpeed | number:'.0-0' }} m/s
+          Wind Speed: {{ forecast.daily.data[0].windSpeed | number:'.0-0' }} kph
         </p>
       </ion-col>
     </ion-row>
+    <hr>
     <ion-row>
-      <ion-col col-3 *ngFor="let index of [0,1,2,3]">
+        <ion-col col-2 *ngFor="let hourForecast of forecast.hourly.data | slice:0:12">
+          <p>
+            {{ hourForecast.time * 1000 | date: 'HH:mm' }}
+          </p>
+          <p>
+            {{ hourForecast.precipIntensity | number:'.0-0'}}&nbsp;mm
+          </p>
+          <p>
+            {{ hourForecast.temperature | number:'.0-0' }}&deg;C
+          </p>
+        </ion-col>
+    </ion-row>
+    <hr>
+    <ion-row>
+      <ion-col col-3 *ngFor="let index of [1,2,3,4]" text-center>
         <p>
           {{ forecast.daily.data[index].time | formatDate:'dddd' }}
         </p>
@@ -38,7 +58,7 @@
           <ion-icon name="{{ forecast.daily.data[index].icon | weatherIcon }}"></ion-icon>
         </h2>
         <p>
-          {{ forecast.daily.data[index].temperatureMax | number:'.0-0'}}&deg;C / {{ forecast.daily.data[index].temperatureMin | number:'.0-0'}}&deg;C
+          {{ forecast.daily.data[index].temperatureMax | number:'.0-0'}}&deg;C
         </p>
       </ion-col>
     </ion-row>
