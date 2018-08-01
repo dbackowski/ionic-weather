@@ -1,8 +1,8 @@
 {
-  "name": "ionic2-weather",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "ionic-weather",
+  "version": "1.0.0",
+  "author": "Damian Baćkowski",
+  "homepage": "https://github.com/dbackowski/ionic-weather",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -44,9 +44,8 @@
     "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.0",
+    "@ionic/app-scripts": "3.1.11",
     "dotenv": "^4.0.0",
-    "ionic": "3.20.0",
     "lodash": "^4.17.4",
     "typescript": "2.5.3"
   },
